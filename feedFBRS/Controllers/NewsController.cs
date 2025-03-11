@@ -69,6 +69,7 @@ namespace feedFBRS.Controllers
 
 
 
+
         public JsonResult GetNews()
         {
             var newsList = newsDAO.LoadNews(); // Busca as notícias no banco ou JSON
@@ -100,15 +101,15 @@ namespace feedFBRS.Controllers
         }
 
         // Método para curtir uma notícia
-        public ActionResult Like(string id)
+        public ActionResult Like(string id, string userId)
         {
-            newsDAO.AddLike(id);
-            return RedirectToAction("Index");
+            newsDAO.AddLike(id, userId);
+            return Json(new { success = true, message = "Curtida registrada!" });
         }
 
         // Método para adicionar um comentário
         [HttpPost]
-        public ActionResult AddComment(string id, string commentText, string author)
+        public JsonResult AddComment(string id, string commentText, string author)
         {
             if (!string.IsNullOrEmpty(commentText))
             {
@@ -120,10 +121,45 @@ namespace feedFBRS.Controllers
                     Author = author,
                     Timestamp = DateTime.Now
                 };
+
                 newsDAO.AddComment(id, comment);
+                return Json(new { success = true, message = "Comentário adicionado com sucesso!" });
             }
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = "Comentário inválido." });
         }
+
+        [HttpGet]
+        public JsonResult GetComments(string newsId)
+        {
+            var comments = newsDAO.GetComments(newsId);
+
+            if (comments == null || comments.Count == 0)
+            {
+                return Json(new { success = false, message = "Nenhum comentário encontrado." }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success = true, data = comments }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetCommentCount(string newsId)
+        {
+            int count = newsDAO.GetCommentCount(newsId);
+            return Json(new { success = true, count = count }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+        [HttpPost]
+        public JsonResult LikeComment(string newsId, string commentId, string userId)
+        {
+            newsDAO.AddLikeToComment(newsId, commentId, userId);
+            return Json(new { success = true, message = "Comentário curtido com sucesso!" });
+        }
+
+
+
 
     }
 }

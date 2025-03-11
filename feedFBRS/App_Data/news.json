@@ -1,81 +1,209 @@
 [
   {
-    "Id": "20250310132006",
-    "Content": "teste de envio de multiplas fotos 1",
+    "Id": "20250311153335",
+    "Content": "eqweqweqwewq",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
-    "Comments": [],
-    "ImageUrls": []
-  },
-  {
-    "Id": "20250310132216",
-    "Content": "sadasd",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": []
-  },
-  {
-    "Id": "20250310132746",
-    "Content": "rewrwer",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
+    "Comments": [
+      {
+        "Id": "a0ef2772-7929-445d-9b87-1755291ed2b4",
+        "NewsId": "20250311153335",
+        "Content": "teste",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:33:42.6754842-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "794283ae-9b77-4cdf-a5fe-82b481bb5413",
+        "NewsId": "20250311153335",
+        "Content": "mais um comentario pra teste",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:39:51.8778858-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "13b84f78-b214-4132-915c-95cd279e3c47",
+        "NewsId": "20250311153335",
+        "Content": "regerg",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:46:36.7320107-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "8889797a-4384-476f-a544-38558d09b3cc",
+        "NewsId": "20250311153335",
+        "Content": "greger",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:46:38.4050462-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "929541b6-4195-436c-bc35-cb86b1a27964",
+        "NewsId": "20250311153335",
+        "Content": "outro teste",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:50:35.1868673-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "a86723f5-2d17-4560-8415-1718c8a98b60",
+        "NewsId": "20250311153335",
+        "Content": "teste 2",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:50:39.4137237-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      }
+    ],
     "ImageUrls": [
-      "/Uploads/00417f0d-b870-4533-a49e-c81e94962e42.webp",
-      "/Uploads/c8af84a8-d3ed-4fd2-b125-395af32bfa5a.jpg",
-      "/Uploads/20918aa4-3549-4bdd-b2f6-bc666d80b8a3.jpg"
-    ]
+      "/Uploads/84936a90-09ab-446a-9a0d-0681eb6e6214.webp",
+      "/Uploads/cdea6a7f-cb49-4e98-976d-ecadff844049.jpg",
+      "/Uploads/124e8e2d-a617-4b2f-ae34-7ea35bb3cd26.jpg"
+    ],
+    "UsersWhoLiked": []
   },
   {
-    "Id": "20250310133158",
-    "Content": "ewqeqweq",
+    "Id": "20250311155119",
+    "Content": "nova publicação para teste",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
-    "Comments": [],
+    "Comments": [
+      {
+        "Id": "8307e1d7-e1b8-4e0d-872f-0f563db22bb8",
+        "NewsId": "20250311155119",
+        "Content": "opa eae mew",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T15:51:33.3124745-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      }
+    ],
     "ImageUrls": [
-      "/Uploads/be37fa15-2b35-4505-a4b3-dabd4f50abe7.webp",
-      "/Uploads/4387c892-f344-46ef-8f0e-f438958fbb90.jpg",
-      "/Uploads/caa334ce-299a-4267-8cfa-392a5d135287.jpg"
-    ]
+      "/Uploads/029aa27f-d168-4062-8d66-d1a747fefab1.jpg",
+      "/Uploads/6063a9ac-4b00-4683-a403-579861c2df0e.jpg",
+      "/Uploads/a951d1ed-fc9f-46dc-8000-330a4a6782ea.webp"
+    ],
+    "UsersWhoLiked": []
   },
   {
-    "Id": "20250310135121",
-    "Content": "sdadasdasd",
+    "Id": "20250311161204",
+    "Content": "ewqewqewq",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
-    "Comments": [],
+    "Comments": [
+      {
+        "Id": "00efb50a-bf40-453a-9a77-42426f5bdfc7",
+        "NewsId": "20250311161204",
+        "Content": "teste",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:17:02.2751445-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      }
+    ],
+    "ImageUrls": [],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250311161918",
+    "Content": "teste quanto like pub",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [
+      {
+        "Id": "73a0463f-29fa-4bfc-b4e3-f59789bb858b",
+        "NewsId": "20250311161918",
+        "Content": "comenti 1",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:19:38.261982-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      },
+      {
+        "Id": "7d38fd94-752f-4cd4-9516-03d4a0cc0b8f",
+        "NewsId": "20250311161918",
+        "Content": "comenti 2",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:20:00.2004432-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      }
+    ],
     "ImageUrls": [
-      "/Uploads/2f065b47-ac39-48f6-b17d-6e3bc207d81c.jpg",
-      "/Uploads/336ff9dd-724c-4443-9c26-6668d0072f96.jpg",
-      "/Uploads/d0c3fa98-3009-4c8b-a0a0-dcfd897cd0bf.jpg",
-      "/Uploads/35d2c88b-643c-45d9-a6a9-2b0e8f4dca67.png"
-    ]
+      "/Uploads/8672e97b-ff6e-4de1-b780-e9f3dd1f90a6.webp"
+    ],
+    "UsersWhoLiked": []
   },
   {
-    "Id": "20250310163419",
-    "Content": "wqygduygwdyugwquydgqwyudgqwyudgqwygdqwygdqwygdqwydggdqwgduydsahodijasdijsaoi djosi djasoidhasoidasiodhasoiudhashd oasihdioasjdioasjdioasjdoaisjd oiasjdoiasjdio sajdoiasjdoisajodisajoidasjoidasjdoij oiasjdoiasjdoiasjdoisajdioasjdioasjdiosajdoisajdoisjdoijasidasjoidjasoidjasoidjsaoidjsaoidjasoidjasiodjoi jiosajdioasjdoisajdioasjdioasjdoiasjdoia",
+    "Id": "20250311163547",
+    "Content": "teste de like na noticia",
     "Author": "Anônimo",
     "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": []
-  },
-  {
-    "Id": "20250310201627",
-    "Content": "hwqeuhwqieuhqwehqwiuehqwiuehqwuiehqwuiehqwiuehqiuwheqiwuhewqiuheqwui",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": [
-      "/Uploads/061429dd-e7f4-443c-9faf-5f0142b4b95b.jpg",
-      "/Uploads/1af3c81b-4d50-442e-8548-5f1e46b189fd.jpg"
+    "Likes": 1,
+    "Comments": [
+      {
+        "Id": "4631a742-f211-4e2f-94b0-617b000ce69c",
+        "NewsId": "20250311163547",
+        "Content": "wqqwrqw",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:41:44.7098252-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      },
+      {
+        "Id": "b6e6051d-d367-4556-a669-6692dfe37ac8",
+        "NewsId": "20250311163547",
+        "Content": "oi",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:45:40.5505379-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      },
+      {
+        "Id": "c0a1856f-f101-4fab-9c84-0365c1f0045d",
+        "NewsId": "20250311163547",
+        "Content": "ewqewqe",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:49:30.0115894-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      },
+      {
+        "Id": "40147311-66a8-4e25-8afc-ab73807f2451",
+        "NewsId": "20250311163547",
+        "Content": "rwqeqwewq",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-11T16:56:09.7850223-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      }
+    ],
+    "ImageUrls": [],
+    "UsersWhoLiked": [
+      "anonimo"
     ]
   }
 ]

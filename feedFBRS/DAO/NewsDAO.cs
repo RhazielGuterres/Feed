@@ -20,14 +20,18 @@ namespace feedFBRS.DAO
             return JsonConvert.DeserializeObject<List<News>>(json) ?? new List<News>();
         }
 
-        public void AddLike(string newsId)
+        public void AddLike(string newsId, string userId)
         {
             var newsList = LoadNews();
             var news = newsList.Find(n => n.Id == newsId);
             if (news != null)
             {
-                news.Likes++;
-                SaveNews(newsList);
+                if (!news.UsersWhoLiked.Contains(userId)) // Verifica se o usuário já curtiu
+                {
+                    news.UsersWhoLiked.Add(userId);
+                    news.Likes++;
+                    SaveNews(newsList);
+                }
             }
         }
 
@@ -55,5 +59,51 @@ namespace feedFBRS.DAO
             newsList.Add(news);
             SaveNews(newsList);
         }
+
+        public List<Comment> GetComments(string newsId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+            return news?.Comments ?? new List<Comment>(); // Retorna os comentários ou uma lista vazia
+        }
+
+        public int GetCommentCount(string newsId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+            return news?.Comments.Count ?? 0; // Retorna o número de comentários
+        }
+
+
+
+
+        public void AddLikeToComment(string newsId, string commentId, string userId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+
+            if (news != null)
+            {
+                var comment = news.Comments.Find(c => c.Id == commentId);
+                if (comment != null)
+                {
+                    if (comment.UsersWhoLiked.Contains(userId)) // Se já curtiu, remove
+                    {
+                        comment.UsersWhoLiked.Remove(userId);
+                        comment.Likes--;
+                    }
+                    else // Se não curtiu, adiciona
+                    {
+                        comment.UsersWhoLiked.Add(userId);
+                        comment.Likes++;
+                    }
+                    SaveNews(newsList);
+                }
+            }
+        }
+
+
+
+
     }
 }

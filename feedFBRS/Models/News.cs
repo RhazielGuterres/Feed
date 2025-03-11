@@ -14,5 +14,7 @@ namespace feedFBRS.Models
         public int Likes { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
         public List<string> ImageUrls { get; set; } = new List<string>();
+        public HashSet<string> UsersWhoLiked { get; set; } = new HashSet<string>(); // Lista de usuários que curtiram
+
     }
 }
