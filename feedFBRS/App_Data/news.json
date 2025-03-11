@@ -1,74 +1,81 @@
 [
   {
-    "Id": "20250307104858",
-    "Content": "teste",
+    "Id": "20250310132006",
+    "Content": "teste de envio de multiplas fotos 1",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/67cd5938-4807-4527-a52f-6b9354336423.webp"
+    "ImageUrls": []
   },
   {
-    "Id": "20250307104914",
-    "Content": "mais um teste",
+    "Id": "20250310132216",
+    "Content": "sadasd",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/4cb46e9f-055a-4cd9-9aed-6c624109b35b.webp"
+    "ImageUrls": []
   },
   {
-    "Id": "20250307105458",
-    "Content": "teste 1",
+    "Id": "20250310132746",
+    "Content": "rewrwer",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/42d4b13b-0b26-43ab-96ea-4838c20e69af.webp"
+    "ImageUrls": [
+      "/Uploads/00417f0d-b870-4533-a49e-c81e94962e42.webp",
+      "/Uploads/c8af84a8-d3ed-4fd2-b125-395af32bfa5a.jpg",
+      "/Uploads/20918aa4-3549-4bdd-b2f6-bc666d80b8a3.jpg"
+    ]
   },
   {
-    "Id": "20250307105518",
-    "Content": "fgvuywgfygwyfgwyfugwyufgw",
+    "Id": "20250310133158",
+    "Content": "ewqeqweq",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/c53a5016-066c-4fa2-bf1c-93da03ca3aed.webp"
+    "ImageUrls": [
+      "/Uploads/be37fa15-2b35-4505-a4b3-dabd4f50abe7.webp",
+      "/Uploads/4387c892-f344-46ef-8f0e-f438958fbb90.jpg",
+      "/Uploads/caa334ce-299a-4267-8cfa-392a5d135287.jpg"
+    ]
   },
   {
-    "Id": "20250307112123",
-    "Content": "terte",
+    "Id": "20250310135121",
+    "Content": "sdadasdasd",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/c3a9661a-29c9-4f43-b5af-dcea2fd42434.jpg"
+    "ImageUrls": [
+      "/Uploads/2f065b47-ac39-48f6-b17d-6e3bc207d81c.jpg",
+      "/Uploads/336ff9dd-724c-4443-9c26-6668d0072f96.jpg",
+      "/Uploads/d0c3fa98-3009-4c8b-a0a0-dcfd897cd0bf.jpg",
+      "/Uploads/35d2c88b-643c-45d9-a6a9-2b0e8f4dca67.png"
+    ]
   },
   {
-    "Id": "20250307112200",
-    "Content": "dwqdqwd",
+    "Id": "20250310163419",
+    "Content": "wqygduygwdyugwquydgqwyudgqwyudgqwygdqwygdqwygdqwydggdqwgduydsahodijasdijsaoi djosi djasoidhasoidasiodhasoiudhashd oasihdioasjdioasjdioasjdoaisjd oiasjdoiasjdio sajdoiasjdoisajodisajoidasjoidasjdoij oiasjdoiasjdoiasjdoisajdioasjdioasjdiosajdoisajdoisjdoijasidasjoidjasoidjasoidjsaoidjsaoidjasoidjasiodjoi jiosajdioasjdoisajdioasjdioasjdoiasjdoia",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/888a33a6-bd80-4fb7-beda-cbb0e58340b9.webp"
+    "ImageUrls": []
   },
   {
-    "Id": "20250307112236",
-    "Content": "dsadsad",
+    "Id": "20250310201627",
+    "Content": "hwqeuhwqieuhqwehqwiuehqwiuehqwuiehqwuiehqwiuehqiuwheqiwuhewqiuheqwui",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [],
-    "ImageUrl": "/Uploads/3c11eb02-41f1-438b-a52e-02fa4ef6d598.jpg"
-  },
-  {
-    "Id": "20250307112543",
-    "Content": "rewtrret",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrl": "/Uploads/bd3e78bc-53e0-4134-ba9c-d0844b44e757.jpg"
+    "ImageUrls": [
+      "/Uploads/061429dd-e7f4-443c-9faf-5f0142b4b95b.jpg",
+      "/Uploads/1af3c81b-4d50-442e-8548-5f1e46b189fd.jpg"
+    ]
   }
 ]

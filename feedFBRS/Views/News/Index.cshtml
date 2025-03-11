@@ -21,7 +21,6 @@
         max-width: 600px;
         margin: 20px auto;
         background: white;
-        padding: 20px;
         border-radius: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
@@ -29,6 +28,7 @@
     .user-profile {
         display: flex;
         align-items: center;
+        padding: 3%;
     }
 
     .user-avatar {
@@ -330,6 +330,17 @@
     .image-container:hover .remove-image {
         display: flex;
     }
+
+    .carousel-inner {
+        max-height: 400px; /* Defina a altura fixa desejada */
+        overflow: hidden; /* Garante que imagens grandes não expandam o carrossel */
+    }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 400px; /* Mantém todas as imagens com a mesma altura */
+            object-fit: cover; /* Ajusta as imagens sem distorção */
+        }
 </style>
 
 <body class="fontefeed" style="background-color: #f5f5f5;">
@@ -367,7 +378,7 @@
                                             <div class="bolinhaTitulo" style="position: relative; left: -6px;">
                                                 <span>+</span>
                                             </div>
-                                            <input type="file" id="inputFile" name="image" accept="image/*"  hidden>
+                                            <input type="file" id="inputFile" name="image" accept="image/*" multiple hidden>
                                             <div>
                                                 Adicionar foto
                                             </div>
@@ -389,10 +400,16 @@
                 </div>
 
                 <script>
+
                     document.getElementById("newsForm").addEventListener("submit", function (event) {
                         event.preventDefault(); // Impede o reload da página
 
                         let formData = new FormData(this);
+
+                        // Adiciona imagens ao FormData
+                        imagens.forEach((file) => {
+                            formData.append(`images`, file); // Adiciona cada imagem ao FormData
+                        });
 
                         fetch("/News/Create", {
                             method: "POST",
@@ -410,23 +427,81 @@
                         });
                     });
 
-                    // Atualiza a pré-visualização da imagem
-                    document.getElementById("inputFile").addEventListener("change", function () {
-                        let previewContainer = document.getElementById("imagePreviewContainer");
-                        previewContainer.innerHTML = ""; // Limpa pré-visualização anterior
+                    const inputFile = document.getElementById("inputFile");
+                    const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+                    const contadorFotos = document.getElementById("contadorFotos");
+                    const publicarBtn = document.getElementById("publicarBtn");
+                    const publicacoes = document.getElementById("publicacoes");
 
-                        if (this.files.length > 0) {
-                            let img = document.createElement("img");
-                            img.src = URL.createObjectURL(this.files[0]);
-                            img.style.maxWidth = "100px";
-                            img.style.marginRight = "10px";
-                            previewContainer.appendChild(img);
+                    let imagens = [];
 
-                            document.getElementById("contadorFotos").innerText = "1/1";
-                        } else {
-                            document.getElementById("contadorFotos").innerText = "0/1";
+                    inputFile.addEventListener("change", function (event) {
+                        let files = Array.from(event.target.files);
+
+                        files.forEach(file => {
+                            if (imagens.length < 6) {
+                                imagens.push(file);
+                            }
+                        });
+
+                        atualizarPreview();
+                    });
+
+                    function atualizarPreview() {
+                        imagePreviewContainer.innerHTML = "";
+                        imagens.forEach((file, index) => {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                let imgWrapper = document.createElement("div");
+                                imgWrapper.classList.add("image-container");
+                                imgWrapper.innerHTML = `
+                                <img src="${e.target.result}" alt="Imagem" style="max-width: 100px; margin-right: 10px;">
+                                <button class="remove-image" onclick="removerImagem(${index})">&times;</button>
+                            `;
+                                imagePreviewContainer.appendChild(imgWrapper);
+                            };
+                            reader.readAsDataURL(file);
+                        });
+
+                        contadorFotos.innerText = `${imagens.length}/6`;
+                    }
+
+                    function removerImagem(index) {
+                        imagens.splice(index, 1);
+                        atualizarPreview();
+
+                        // Atualizar o input file para refletir as imagens restantes
+                        let dataTransfer = new DataTransfer();
+                        imagens.forEach(file => dataTransfer.items.add(file));
+                        inputFile.files = dataTransfer.files;
+                    }
+
+                    publicarBtn.addEventListener("click", function () {
+                        publicacoes.innerHTML = "<h4>Publicação</h4>";
+
+                        imagens.forEach(file => {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                let imgElement = document.createElement("img");
+                                imgElement.src = e.target.result;
+                                imgElement.width = 150;
+                                imgElement.style.margin = "5px";
+                                publicacoes.appendChild(imgElement);
+                            };
+                            reader.readAsDataURL(file);
+                        });
+
+                        imagens = [];
+                        atualizarPreview();
+
+                        // Fechar a modal corretamente se estiver usando Bootstrap
+                        let modalElement = document.getElementById("novaPublicacaoModal");
+                        if (modalElement && bootstrap.Modal.getInstance(modalElement)) {
+                            let modal = bootstrap.Modal.getInstance(modalElement);
+                            modal.hide();
                         }
                     });
+
                 </script>
 
 
@@ -463,70 +538,84 @@
                         data.forEach(news => {
                             console.log("Notícia recebida:", news);
                             let noticiaHTML = `
-                                    <div class="noticia">
-                                        <!-- Perfil do Usuário -->
-                                        <div class="user-profile">
-                                            <div class="user-avatar publicacao"></div>
-                                            <div class="user-info alinhartexto-publicacao">
-                                                <h5 class="m-0 tamanhonomeusuario">${news.Author}</h5>
+                                        <div class="noticia">
+                                            <!-- Perfil do Usuário -->
+                                            <div class="user-profile">
+                                                <div class="user-avatar publicacao"></div>
+                                                <div class="user-info alinhartexto-publicacao">
+                                                    <h5 class="m-0 tamanhonomeusuario">${news.Author}</h5>
+                                                </div>
+                                                <div class="horario">
+                                                    ${formatarData(news.Id)}
+                                                </div>
                                             </div>
-                                            <div class="horario">
-                                                ${formatarData(news.Id)}
+
+                                            <!-- Conteúdo da notícia -->
+                                            <div class="card-body" style="word-wrap: break-word;">
+                                                <p class="card-text">${news.Content}</p>
                                             </div>
-                                        </div>
 
-                                        <!-- Conteúdo da notícia -->
-                                        <div class="card-body">
-                                            <p class="card-text">${news.Content}</p>
-                                        </div>
-
-                                        <!-- Exibir imagem se houver -->
-                                        ${news.ImageUrl ? `<img src="${news.ImageUrl}" class="card-img-top imagempost" alt="Imagem do post">` : ""}
-
-                                        <!-- Ações -->
-                                        <div class="card-footer d-flex justify-content-between align-items-center postiondivi">
-                                <div>
-                                    <button class="heart-btn tirarlinha">
-                                        <svg class="heart-icon tirarcor" width="30" height="30" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="btn btn btn-outline-secundary btn-sm">
-                                        <svg aria-label="Comentar" class="x1lliihq x1n2onr6 x5n08af icon"
-                                            fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
-                                            <title>Comentar</title>
-                                            <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none"
-                                                stroke="gray" stroke-linejoin="round" stroke-width="2"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="comentario-box">
-                                    <textarea class="comentario-input" placeholder="Comente algo aqui..."
-                                        rows="1"></textarea>
-                                </div>
-                                <div>
-                                    <button class="icon-container" style="border: none; outline: none;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
-                                            fill="white">
-                                            <path
-                                                d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="positioncomentfeed">
-                                    20 comentários, <a href=""><i>ver todos...</i></a>
-                                </div>
-                            </div>
+                                            <div id="carousel-${news.Id}" class="carousel slide">
+                                            <div class="carousel-inner">
+                                                ${news.ImageUrls.map((url, index) => `
+                                                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                                                        <img src="${url}" class="d-block w-100" alt="Imagem do post">
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${news.Id}" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carousel-${news.Id}" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
+                                            <!-- Ações -->
+                                            <div class="card-footer d-flex justify-content-between align-items-center postiondivi" style="display: flex; margin-right: 40px; margin-left: 40px;">
+                                    <div>
+                                        <button class="heart-btn tirarlinha" style="padding: 0px";>
+                                            <svg class="heart-icon tirarcor" width="30" height="30" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
                                     </div>
-                                `;
+                                    <div>
+                                        <button class="btn btn btn-outline-secundary btn-sm" style="padding: 0px";>
+                                            <svg aria-label="Comentar" class="x1lliihq x1n2onr6 x5n08af icon"
+                                                fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                                <title>Comentar</title>
+                                                <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none"
+                                                    stroke="#ccc" stroke-linejoin="round" stroke-width="2"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="comentario-box">
+                                        <textarea class="comentario-input" placeholder="Comente algo aqui..."
+                                            rows="1"></textarea>
+                                    </div>
+                                    <div>
+                                        <button class="icon-container" style="border: none; outline: none;padding: 2px">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                                fill="white">
+                                                <path
+                                                    d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z"
+                                                    stroke="white" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="positioncomentfeed">
+                                        20 comentários, <a href=""><i>ver todos...</i></a>
+                                    </div>
+                                </div>
+                                        </div>
+                                    `;
 
                             // Adiciona a notícia ao feed
                             feedContainer.innerHTML += noticiaHTML;

@@ -22,11 +22,11 @@ namespace feedFBRS.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(string title, string content, string author, HttpPostedFileBase image)
+        public ActionResult Create(string title, string content, string author, HttpPostedFileBase[] images)
         {
             if (!string.IsNullOrEmpty(content)) // Apenas 'content' é obrigatório
             {
-                string imagePath = null;
+                List<string> imagePaths = new List<string>(); // Lista para armazenar os caminhos das imagens
 
                 // 🔹 Definir a pasta correta para salvar as imagens
                 string uploadDir = Server.MapPath("~/Uploads/");
@@ -35,13 +35,19 @@ namespace feedFBRS.Controllers
                     Directory.CreateDirectory(uploadDir);
                 }
 
-                // 🔹 Salva a imagem corretamente, se houver
-                if (image != null && image.ContentLength > 0)
+                // 🔹 Salva todas as imagens corretamente, se houverem
+                if (images != null)
                 {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-                    string filePath = Path.Combine(uploadDir, fileName);
-                    image.SaveAs(filePath);
-                    imagePath = "/Uploads/" + fileName; // Caminho relativo para exibição
+                    foreach (var image in images)
+                    {
+                        if (image != null && image.ContentLength > 0)
+                        {
+                            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                            string filePath = Path.Combine(uploadDir, fileName);
+                            image.SaveAs(filePath);
+                            imagePaths.Add("/Uploads/" + fileName); // Caminho relativo para exibição
+                        }
+                    }
                 }
 
                 var news = new News
@@ -52,7 +58,7 @@ namespace feedFBRS.Controllers
                     Approved = false,
                     Likes = 0,
                     Comments = new List<Comment>(),
-                    ImageUrl = imagePath // Caminho relativo
+                    ImageUrls = imagePaths // Agora é uma lista de imagens
                 };
 
                 newsDAO.AddNews(news);
@@ -60,6 +66,7 @@ namespace feedFBRS.Controllers
 
             return RedirectToAction("Index");
         }
+
 
 
         public JsonResult GetNews()

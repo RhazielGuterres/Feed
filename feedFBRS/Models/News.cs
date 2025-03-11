@@ -13,6 +13,6 @@ namespace feedFBRS.Models
         public bool Approved { get; set; } // Indica se GGP ou Comunicação aprovaram
         public int Likes { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
-        public string ImageUrl { get; set; }
+        public List<string> ImageUrls { get; set; } = new List<string>();
     }
 }
