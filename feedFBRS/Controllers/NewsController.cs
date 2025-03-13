@@ -24,7 +24,12 @@ namespace feedFBRS.Controllers
         [HttpPost]
         public ActionResult Create(string title, string content, string author, HttpPostedFileBase[] images)
         {
-            if (!string.IsNullOrEmpty(content)) // Apenas 'content' é obrigatório
+
+            // Verifica se há conteúdo de texto ou pelo menos uma imagem válida
+            bool hasContent = !string.IsNullOrEmpty(content);
+            bool hasImages = images != null && images.Any(img => img != null && img.ContentLength > 0);
+
+            if (hasContent || hasImages) // verificar se apenas um dos dois valores está preenchido (imagem ou texto)
             {
                 List<string> imagePaths = new List<string>(); // Lista para armazenar os caminhos das imagens
 
@@ -36,7 +41,7 @@ namespace feedFBRS.Controllers
                 }
 
                 // 🔹 Salva todas as imagens corretamente, se houverem
-                if (images != null)
+                if (hasImages)
                 {
                     foreach (var image in images)
                     {
