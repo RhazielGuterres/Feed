@@ -23,6 +23,42 @@
         "Timestamp": "2025-03-13T10:51:26.0116774-03:00",
         "Likes": 0,
         "UsersWhoLiked": []
+      },
+      {
+        "Id": "cd26e7a6-fdfc-4ae7-b1ce-68bfc7aa7546",
+        "NewsId": "20250313103834",
+        "Content": "dsaffwe",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-13T12:39:31.01507-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "22ed89b3-8639-4c98-84b5-ee2a52e311dd",
+        "NewsId": "20250313103834",
+        "Content": "fwefwef",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-13T12:39:32.4378319-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "c29faf6f-2c5d-4183-9d42-065eee8f652d",
+        "NewsId": "20250313103834",
+        "Content": "fwefwe",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-13T12:39:33.902622-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "242145ac-5265-4cae-b8f0-0cce336a7572",
+        "NewsId": "20250313103834",
+        "Content": "fwefwef",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-13T12:39:35.9218006-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
       }
     ],
     "ImageUrls": [
@@ -41,6 +77,92 @@
     "Comments": [],
     "ImageUrls": [
       "/Uploads/355bc827-55dd-45d5-b990-c2fb5d2acb73.webp"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250313113949",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/90de454a-0a52-423a-b433-d68c9f47f603.jpg"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250313114917",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/40b4b85d-8caf-4e58-88a2-39a2826a53d3.jpg",
+      "/Uploads/0ad83ddc-bdf6-4d82-95d0-cc3527f7ba4d.jpg",
+      "/Uploads/a616b179-dd2c-4b96-bd39-fc5b506990c1.jpg",
+      "/Uploads/12344e24-7a90-4b66-a4e6-9a8bb6adbf7a.jpg",
+      "/Uploads/00c91c36-2fbb-48fc-b443-8e36bdf8643b.jpg"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250313114924",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/69e85674-38d8-4cb6-b1b5-ce72afd76f35.jpg",
+      "/Uploads/8fa811aa-843a-468f-b916-753329f4cc69.jpg",
+      "/Uploads/f6fbc3f9-0049-4d25-bc23-323c78b49817.jpg"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250313115550",
+    "Content": "olha o wesleysniper",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [
+      {
+        "Id": "1beca4d1-5f0a-4a2a-b69b-8e20f949a23c",
+        "NewsId": "20250313115550",
+        "Content": "baaah que negroni",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-13T11:56:11.7899725-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
+      {
+        "Id": "04914367-b1d9-4cb1-9c4c-705bef16c995",
+        "NewsId": "20250313115550",
+        "Content": "olha o negroni",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-13T11:56:21.1049679-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      }
+    ],
+    "ImageUrls": [
+      "/Uploads/7413466b-46e1-4a5d-bf42-897732484e9b.webp"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250313115812",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/53699b88-f027-4f3e-90f5-07727aab60aa.webp",
+      "/Uploads/c07984ab-c2af-4bb3-999c-c01245efadbb.webp"
     ],
     "UsersWhoLiked": []
   }
