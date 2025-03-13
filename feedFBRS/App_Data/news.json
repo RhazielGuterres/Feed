@@ -31,5 +31,17 @@
     "UsersWhoLiked": [
       "anonimo"
     ]
+  },
+  {
+    "Id": "20250313112046",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/355bc827-55dd-45d5-b990-c2fb5d2acb73.webp"
+    ],
+    "UsersWhoLiked": []
   }
 ]

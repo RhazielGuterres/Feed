@@ -371,8 +371,10 @@
                             </div>
                             <form id="newsForm" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    <textarea class="textarea-container" id="content" name="content"
-                                              placeholder="Digite aqui o que você quer que apareça no feed..."></textarea>
+                                    <div style="display: flex; justify-content: center;">
+                                        <textarea style="max-width: 700px;" class="textarea-container" id="content" name="content"
+                                                  placeholder="Digite aqui o que você quer que apareça no feed..."></textarea>
+                                    </div>
                                     <div class="mt-3 d-flex align-items-center">
                                         <label class="add-photo">
                                             <div class="bolinhaTitulo" style="position: relative; left: -6px;">
@@ -387,7 +389,7 @@
                                     </div>
                                     <div id="imagePreviewContainer" class="d-flex mt-3"></div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="border-top: none;">
                                     <button type="button" class="btn-footer" data-bs-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn-footer" style="background-color: #007bff;"
                                             id="publicarBtn">
