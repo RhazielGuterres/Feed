@@ -35,6 +35,37 @@ namespace feedFBRS.DAO
             }
         }
 
+        public bool HasUserLiked(string newsId, string userId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+
+            if (news != null)
+            {
+                return news.UsersWhoLiked.Contains(userId);
+            }
+
+            return false;
+        }
+
+        public void RemoveLike(string newsId, string userId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+
+            if (news != null)
+            {
+                if (news.UsersWhoLiked.Contains(userId)) // Verifica se o usuário curtiu
+                {
+                    news.UsersWhoLiked.Remove(userId);
+                    news.Likes = Math.Max(0, news.Likes - 1); // Garante que não fique negativo
+                    SaveNews(newsList);
+                }
+            }
+        }
+
+
+
         public void AddComment(string newsId, Comment comment)
         {
             var newsList = LoadNews();
@@ -73,6 +104,7 @@ namespace feedFBRS.DAO
             var news = newsList.Find(n => n.Id == newsId);
             return news?.Comments.Count ?? 0; // Retorna o número de comentários
         }
+
 
 
 

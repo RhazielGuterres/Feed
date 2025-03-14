@@ -108,9 +108,27 @@ namespace feedFBRS.Controllers
         // Método para curtir uma notícia
         public ActionResult Like(string id, string userId)
         {
-            newsDAO.AddLike(id, userId);
-            return Json(new { success = true, message = "Curtida registrada!" });
+            bool alreadyLiked = newsDAO.HasUserLiked(id, userId);
+
+            if (alreadyLiked)
+            {
+                newsDAO.RemoveLike(id, userId); // Se já curtiu, remove a curtida (toggle)
+                return Json(new { success = true, liked = false, message = "Curtida removida!" });
+            }
+            else
+            {
+                newsDAO.AddLike(id, userId);
+                return Json(new { success = true, liked = true, message = "Curtida registrada!" });
+            }
         }
+
+        public ActionResult CheckLike(string id, string userId)
+        {
+            bool liked = newsDAO.HasUserLiked(id, userId);
+            return Json(new { liked }, JsonRequestBehavior.AllowGet);
+        }
+
+
 
         // Método para adicionar um comentário
         [HttpPost]
