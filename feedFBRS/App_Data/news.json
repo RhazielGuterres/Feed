@@ -39,7 +39,17 @@
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
-    "Comments": [],
+    "Comments": [
+      {
+        "Id": "d86085bf-5f7c-4e19-86d6-823f07b36ca7",
+        "NewsId": "20250314171815",
+        "Content": "egqwygeqwygeqwye",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-14T17:24:17.3200511-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      }
+    ],
     "ImageUrls": [],
     "UsersWhoLiked": []
   },
@@ -51,6 +61,18 @@
     "Likes": 0,
     "Comments": [],
     "ImageUrls": [],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250314172810",
+    "Content": "A tecnologia tem transformado a maneira como vivemos, trabalhamos e nos comunicamos. Com o avanço da inteligência artificial, automação e internet das coisas, o mundo se torna mais conectado e eficiente. Empresas adotam novas ferramentas para otimizar processos, enquanto indivíduos aproveitam a inovação para facilitar t arefas diárias. O futuro promete ainda mais mudanças, tornando essencial a adaptação contínua.\r\n\r\n\r\n",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/85d6c52c-aa1e-4eb9-8329-acd811daa0db.webp"
+    ],
     "UsersWhoLiked": []
   }
 ]
