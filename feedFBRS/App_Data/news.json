@@ -30,8 +30,10 @@
         "Content": "dsaffwe",
         "Author": "Usuário Exemplo",
         "Timestamp": "2025-03-13T12:39:31.01507-03:00",
-        "Likes": 0,
-        "UsersWhoLiked": []
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
       },
       {
         "Id": "22ed89b3-8639-4c98-84b5-ee2a52e311dd",
@@ -39,8 +41,10 @@
         "Content": "fwefwef",
         "Author": "Usuário Exemplo",
         "Timestamp": "2025-03-13T12:39:32.4378319-03:00",
-        "Likes": 0,
-        "UsersWhoLiked": []
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
       },
       {
         "Id": "c29faf6f-2c5d-4183-9d42-065eee8f652d",
@@ -48,8 +52,10 @@
         "Content": "fwefwe",
         "Author": "Usuário Exemplo",
         "Timestamp": "2025-03-13T12:39:33.902622-03:00",
-        "Likes": 0,
-        "UsersWhoLiked": []
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
       },
       {
         "Id": "242145ac-5265-4cae-b8f0-0cce336a7572",
@@ -73,12 +79,14 @@
     "Content": "",
     "Author": "Anônimo",
     "Approved": false,
-    "Likes": 0,
+    "Likes": 1,
     "Comments": [],
     "ImageUrls": [
       "/Uploads/355bc827-55dd-45d5-b990-c2fb5d2acb73.webp"
     ],
-    "UsersWhoLiked": []
+    "UsersWhoLiked": [
+      "anonimo"
+    ]
   },
   {
     "Id": "20250313113949",
@@ -171,19 +179,21 @@
     "Content": "",
     "Author": "Anônimo",
     "Approved": false,
-    "Likes": 0,
+    "Likes": 1,
     "Comments": [],
     "ImageUrls": [
       "/Uploads/759759a1-e2b9-4e26-b19b-ea08610eed87.webp"
     ],
-    "UsersWhoLiked": []
+    "UsersWhoLiked": [
+      "anonimo"
+    ]
   },
   {
     "Id": "20250314150119",
     "Content": "",
     "Author": "Anônimo",
     "Approved": false,
-    "Likes": 0,
+    "Likes": 1,
     "Comments": [],
     "ImageUrls": [
       "/Uploads/d65d050f-dad4-4706-af40-25739fd11337.png",
@@ -192,6 +202,8 @@
       "/Uploads/85674285-f34a-4670-b9a9-06a579cd3d0b.webp",
       "/Uploads/b9146103-0ca9-47f6-a004-1f706e965766.webp"
     ],
-    "UsersWhoLiked": []
+    "UsersWhoLiked": [
+      "anonimo"
+    ]
   }
 ]
