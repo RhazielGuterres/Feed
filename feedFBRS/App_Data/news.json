@@ -1,78 +1,31 @@
 [
   {
-    "Id": "20250314165029",
-    "Content": "teste de like",
+    "Id": "20250314183519",
+    "Content": "dasdasdasdasdasdhas",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [
       {
-        "Id": "d2a78f7b-8229-4f82-b034-22b926466762",
-        "NewsId": "20250314165029",
-        "Content": "teste",
+        "Id": "f3341f8d-acfc-4456-aeaa-61ae6c686b75",
+        "NewsId": "20250314183519",
+        "Content": "dowjqhuidhqwiudhqw",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-14T17:16:21.9392457-03:00",
-        "Likes": 1,
-        "UsersWhoLiked": [
-          "anonimo"
-        ]
-      }
-    ],
-    "ImageUrls": [],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250314171755",
-    "Content": "A tecnologia tem transformado a maneira como vivemos, trabalhamos e nos comunicamos. Com o avanço da inteligência artificial, automação e internet das coisas, o mundo se torna mais conectado e eficiente. Empresas adotam novas ferramentas para otimizar processos, enquanto indivíduos aproveitam a inovação para facilitar tarefas diárias. O futuro promete ainda mais mudanças, tornando essencial a adaptação contínua.",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": [
-      "/Uploads/66f59e2e-0049-456c-9603-3cbe5b9680ac.webp"
-    ],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250314171815",
-    "Content": "    A tecnologia tem transformado a maneira como vivemos, trabalhamos e nos comunicamos. Com o avanço da inteligência artificial, automação e internet das coisas, o mundo se torna mais conectado e eficiente. Empresas adotam novas ferramentas para otimizar processos, enquanto indivíduos aproveitam a inovação para facilitar tarefas diárias. O futuro promete ainda mais mudanças, tornando essencial a adaptação contínua.",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [
+        "Timestamp": "2025-03-14T18:35:26.3024637-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      },
       {
-        "Id": "d86085bf-5f7c-4e19-86d6-823f07b36ca7",
-        "NewsId": "20250314171815",
-        "Content": "egqwygeqwygeqwye",
+        "Id": "93a5d494-9233-49c0-b023-3e63ee364c6a",
+        "NewsId": "20250314183519",
+        "Content": "dnquiwhduiwqhudiwq",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-14T17:24:17.3200511-03:00",
+        "Timestamp": "2025-03-14T18:35:29.6273361-03:00",
         "Likes": 0,
         "UsersWhoLiked": []
       }
     ],
     "ImageUrls": [],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250314171830",
-    "Content": "A tecnologia tem transformado a maneira como vivemos, trabalhamos e nos comunicamos. Com o avanço da inteligência artificial, automação e internet das coisas, o mundo se torna mais conectado e eficiente. Empresas adotam novas ferramentas para otimizar processos, enquanto indivíduos aproveitam a inovação para facilitar t\r\n\r\n\r\n\r\narefas diárias. O futuro promete ainda mais mudanças, tornando essencial a adaptação contínua.",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": [],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250314172810",
-    "Content": "A tecnologia tem transformado a maneira como vivemos, trabalhamos e nos comunicamos. Com o avanço da inteligência artificial, automação e internet das coisas, o mundo se torna mais conectado e eficiente. Empresas adotam novas ferramentas para otimizar processos, enquanto indivíduos aproveitam a inovação para facilitar t arefas diárias. O futuro promete ainda mais mudanças, tornando essencial a adaptação contínua.\r\n\r\n\r\n",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": [
-      "/Uploads/85d6c52c-aa1e-4eb9-8329-acd811daa0db.webp"
-    ],
     "UsersWhoLiked": []
   }
 ]
