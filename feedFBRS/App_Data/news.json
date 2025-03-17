@@ -93,6 +93,17 @@
         "Content": "Ajustado texto do comentario com sucesso!",
         "Author": "Usuário Exemplo",
         "Timestamp": "2025-03-17T15:55:23.8665545-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      },
+      {
+        "Id": "6ed776c2-7280-4071-9682-4108e1031893",
+        "NewsId": "20250317125628",
+        "Content": "dqwqiwhdiuqhwdqwhduiqwd",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-17T16:20:42.865273-03:00",
         "Likes": 0,
         "UsersWhoLiked": []
       }
