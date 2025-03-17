@@ -86,7 +86,17 @@
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
-    "Comments": [],
+    "Comments": [
+      {
+        "Id": "d1046d12-3c97-474f-aa4f-c9f695c44e2e",
+        "NewsId": "20250317125628",
+        "Content": "Ajustado texto do comentario com sucesso!",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-17T15:55:23.8665545-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": []
+      }
+    ],
     "ImageUrls": [
       "/Uploads/16b982b1-289c-40c8-a2c3-1f71fd21c5fd.jpg",
       "/Uploads/96a18a0b-43ed-449b-b0e5-f0f17ddb6dfc.webp"

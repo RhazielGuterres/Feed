@@ -216,6 +216,8 @@
         font-family: Arial, sans-serif;
         resize: none;
         overflow: hidden;
+        max-width: 100%;
+        line-height: 1.6;
     }
 
     .alintextcoment {
@@ -540,6 +542,9 @@
 
                                 // Atualiza o preview para refletir a nova ordem
                                 atualizarPreview();
+
+                                console.log(imagens);
+                                // Agora será ["img3.jpg", "img2.jpg", "img1.jpg"]s
                             }
                         }
                     }
