@@ -1,31 +1,70 @@
 [
   {
-    "Id": "20250314183519",
-    "Content": "dasdasdasdasdasdhas",
+    "Id": "20250314185459",
+    "Content": "A busca pelo sucesso exige disciplina, dedicação e paciência. Muitos acreditam que o talento é o fator decisivo, mas a consistência é o verdadeiro \r\n\r\n\r\ndiferencial. Pequenos esforços diários, somados ao longo do tempo, criam resultados extraordinários. O segredo está em persistir, mesmo quando os desafios parecem intransponíveis. Aprender, evoluir e nunca desistir: esse é o caminho para alcançar qualquer objetivo.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [
       {
-        "Id": "f3341f8d-acfc-4456-aeaa-61ae6c686b75",
-        "NewsId": "20250314183519",
-        "Content": "dowjqhuidhqwiudhqw",
+        "Id": "55848353-743c-425c-a986-08db8e612f31",
+        "NewsId": "20250314185459",
+        "Content": "hufhufhweuhfweui",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-14T18:35:26.3024637-03:00",
-        "Likes": 0,
-        "UsersWhoLiked": []
-      },
+        "Timestamp": "2025-03-14T18:55:48.5857708-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ]
+      }
+    ],
+    "ImageUrls": [
+      "/Uploads/6e230282-d2e5-4fca-97f0-8627be4510c5.webp"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250317112853",
+    "Content": "dasdasd",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [
       {
-        "Id": "93a5d494-9233-49c0-b023-3e63ee364c6a",
-        "NewsId": "20250314183519",
-        "Content": "dnquiwhduiwqhudiwq",
+        "Id": "a06a4866-6989-408a-a4b4-153ab4dc623c",
+        "NewsId": "20250317112853",
+        "Content": "dhqwudhqwudhqwdqwiudhqwuidhiuqwhdiuqwhdiuqwh",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-14T18:35:29.6273361-03:00",
+        "Timestamp": "2025-03-17T11:56:57.6487729-03:00",
         "Likes": 0,
         "UsersWhoLiked": []
       }
     ],
-    "ImageUrls": [],
+    "ImageUrls": [
+      "/Uploads/0ed3b7f1-97bb-4236-98f2-fc33b60ccdcf.webp",
+      "/Uploads/8c67f2b6-b19e-40a7-a8eb-d619ee9f6ba4.webp",
+      "/Uploads/8a50b7be-7bad-411e-8372-947a86137957.webp",
+      "/Uploads/7d38f714-8f1e-4ae7-804b-6c4bc739faca.png",
+      "/Uploads/9975f7d8-31d2-421c-b2fa-7ea5af460b90.png",
+      "/Uploads/ded0db58-83a8-4b08-a8f4-a82bc85c031a.png"
+    ],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250317115838",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/b7b5e152-26b1-4351-bc66-be9b60560d96.webp",
+      "/Uploads/56059183-80c5-46e5-bfc4-1ee2515b8a8a.png",
+      "/Uploads/4c880c9d-afb4-40a8-ac4b-77c4c76ae6f8.jpg",
+      "/Uploads/ceb7faca-0725-43e4-93bd-cc13ad7cf9c7.jpg",
+      "/Uploads/2c95d791-d0b1-4e17-866a-f318930d348e.jpg",
+      "/Uploads/d1bdff27-13ab-4397-b229-8c46e34592c9.jpg"
+    ],
     "UsersWhoLiked": []
   }
 ]
