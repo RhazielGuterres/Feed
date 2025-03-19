@@ -672,7 +672,7 @@
                             feedContainer.innerHTML += noticiaHTML;
 
                             // ✅ Agora verificamos se o usuário já curtiu a notícia ao carregar a página
-                            verificarCurtida(news.Id);
+                            verificarCurtidaFeed(news.Id);
 
                             // Buscar e atualizar o número de comentários
                             fetch(`/News/GetCommentCount?newsId=${news.Id}`)
@@ -816,9 +816,10 @@
 
         function carregarComentarios(postId) {
             let lista = document.getElementById("listaComentarios");
+            let userId = localStorage.getItem("userId") || "anonimo";
            // lista.innerHTML = "<p class='text-muted'>Carregando comentários...</p>";
 
-            fetch(`/News/GetComments?newsId=${postId}`)
+            fetch(`/News/GetComments?newsId=${postId}&userId=${userId}`)
                 .then(response => response.json())
                 .then(response => {
                     console.log("Comentários recebidos:", response);
@@ -839,12 +840,17 @@
                                     <span style="font-size: 12px; color: gray;">${formatarData(c.Timestamp)}</span>
                                     <p class="comentario-texto">${c.Content}</p>
                                     <div class="comentario-acoes">
-                                        <button class="tirarlinha" onclick="curtirComentario('${postId}', '${c.Id}')">
-                                        <svg class="heart-icon tirarcor" width="25" height="25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill="#8371DF" stroke="#8371DF" stroke-width="2" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                                                        </svg>
+                                        <button class="tirarlinha"
+                                                data-news-id="${postId}" 
+                                                data-comment-id="${c.Id}" 
+                                                onclick="curtirComentariu('${postId}', '${c.Id}')">
+                                            <svg class="heart-icon tirarcor" width="25" height="25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill="${c.heavusedlogliked ? '#8371DF' : 'none'}" stroke="#8371DF" stroke-width="2" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                                            </svg>
                                         </button>
-                                        <span style="font-size: 15px;color: rgb(131, 113, 223);" id="curtidas-${postId}-${c.Id}" class="comentario-likes">${c.Likes} curtidas</span>
+                                        <span style="font-size: 15px;color: rgb(131, 113, 223);" data-news-id="${postId}" data-comment-id="${c.Id}" id="curtidas-${postId}-${c.Id}" class="comentario-likes">
+                                            <span>${c.Likes}</span> curtidas
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -896,7 +902,7 @@
                 .catch(error => console.error("Erro ao curtir a notícia:", error));
         }
 
-        function verificarCurtida(newsId) {
+        function verificarCurtidaFeed(newsId) {
             let userId = localStorage.getItem("userId") || "anonimo";
 
             fetch(`/News/CheckLike?id=${encodeURIComponent(newsId)}&userId=${encodeURIComponent(userId)}`)
@@ -917,8 +923,6 @@
                 }
             }
         }
-
-
 
 
 
@@ -1012,6 +1016,54 @@
                     }
                 })
                 .catch(error => console.error("Erro ao alternar curtida:", error));
+        }
+
+        function curtirComentariu(newsId, commentId) {
+            let userId = localStorage.getItem("userId") || "anonimo";
+
+            fetch(`/Comment/LikeComment`, {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `newsId=${encodeURIComponent(newsId)}&commentId=${encodeURIComponent(commentId)}&userId=${encodeURIComponent(userId)}`
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        atualizarIconeCurtidaComentario(newsId, commentId, data.liked);
+                    }
+                })
+                .catch(error => console.error("Erro ao curtir a notícia:", error));
+        }
+
+        function verificarCurtida(newsId, commentId) {
+            let userId = localStorage.getItem("userId") || "anonimo";
+
+            fetch(`/Comment/CheckLikeComment?newsId=${encodeURIComponent(newsId)}&commentId=${encodeURIComponent(commentId)}&userId=${encodeURIComponent(userId)}`)
+                .then(response => response.json())
+                .then(data => {
+                    atualizarIconeCurtida(commentId, data.liked); // Passando o commentId corretamente
+                })
+                .catch(error => console.error("Erro ao verificar curtida:", error));
+        }
+
+
+        function atualizarIconeCurtidaComentario(newsId, commentId, liked) {
+            let botao = document.querySelector(`button[data-news-id="${newsId}"][data-comment-id="${commentId}"] svg path`);
+            let qtdlikes = document.querySelector(`span[data-news-id="${newsId}"][data-comment-id="${commentId}"] span`)
+            debugger
+            if (botao) {
+                if (liked) {
+                    var likes = qtdlikes.innerHTML;
+                    var atualizado = parseInt(likes) + 1;
+                    qtdlikes.innerHTML = atualizado;
+                    botao.setAttribute("fill", "#8371DF"); // Preenche o coração
+                } else {
+                    var likes = qtdlikes.innerHTML;
+                    var atualizado = parseInt(likes) - 1;
+                    qtdlikes.innerHTML = atualizado;
+                    botao.setAttribute("fill", "none"); // Deixa vazio
+                }
+            }
         }
 
 

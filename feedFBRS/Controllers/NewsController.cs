@@ -13,6 +13,8 @@ namespace feedFBRS.Controllers
     {
         private NewsDAO newsDAO = new NewsDAO();
 
+        private CommentDAO commentDAO = new CommentDAO();
+
         // 🔹 Exibir todas as notícias
         public ActionResult Index()
         {
@@ -152,7 +154,7 @@ namespace feedFBRS.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetComments(string newsId)
+        public JsonResult GetComments(string newsId, string userId)
         {
             var comments = newsDAO.GetComments(newsId);
 
@@ -160,7 +162,11 @@ namespace feedFBRS.Controllers
             {
                 return Json(new { success = false, message = "Nenhum comentário encontrado." }, JsonRequestBehavior.AllowGet);
             }
-
+            foreach (var comentario in comments)
+            {
+                bool alreadyLiked = commentDAO.HasUserLiked(newsId, comentario.Id, userId);
+                comentario.heavusedlogliked = alreadyLiked;
+            }
             return Json(new { success = true, data = comments }, JsonRequestBehavior.AllowGet);
         }
 
@@ -181,8 +187,7 @@ namespace feedFBRS.Controllers
             return Json(new { success = true, message = "Comentário curtido com sucesso!" });
         }
 
-
-
+       
 
     }
 }

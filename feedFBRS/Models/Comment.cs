@@ -14,6 +14,7 @@ namespace feedFBRS.Models
         public DateTime Timestamp { get; set; }
         public int Likes { get; set; } = 0; // Número de curtidas no comentário
         public HashSet<string> UsersWhoLiked { get; set; } = new HashSet<string>(); // Lista de usuários que curtiram
+        public bool heavusedlogliked { get; set; }
 
 
     }

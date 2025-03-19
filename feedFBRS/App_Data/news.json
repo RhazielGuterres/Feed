@@ -1,117 +1,37 @@
 [
   {
-    "Id": "20250314185459",
-    "Content": "A busca pelo sucesso exige disciplina, dedicação e paciência. Muitos acreditam que o talento é o fator decisivo, mas a consistência é o verdadeiro \r\n\r\n\r\ndiferencial. Pequenos esforços diários, somados ao longo do tempo, criam resultados extraordinários. O segredo está em persistir, mesmo quando os desafios parecem intransponíveis. Aprender, evoluir e nunca desistir: esse é o caminho para alcançar qualquer objetivo.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "Id": "20250318225119",
+    "Content": "teste",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 0,
     "Comments": [
       {
-        "Id": "55848353-743c-425c-a986-08db8e612f31",
-        "NewsId": "20250314185459",
-        "Content": "hufhufhweuhfweui",
+        "Id": "30184d1d-4c97-45ec-88eb-3c99e6cd740f",
+        "NewsId": "20250318225119",
+        "Content": "udhwquhdquihdqw",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-14T18:55:48.5857708-03:00",
+        "Timestamp": "2025-03-18T22:51:35.2187931-03:00",
         "Likes": 1,
         "UsersWhoLiked": [
           "anonimo"
-        ]
-      }
-    ],
-    "ImageUrls": [
-      "/Uploads/6e230282-d2e5-4fca-97f0-8627be4510c5.webp"
-    ],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250317112853",
-    "Content": "dasdasd",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [
-      {
-        "Id": "a06a4866-6989-408a-a4b4-153ab4dc623c",
-        "NewsId": "20250317112853",
-        "Content": "dhqwudhqwudhqwdqwiudhqwuidhiuqwhdiuqwhdiuqwh",
-        "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-17T11:56:57.6487729-03:00",
-        "Likes": 0,
-        "UsersWhoLiked": []
-      }
-    ],
-    "ImageUrls": [
-      "/Uploads/0ed3b7f1-97bb-4236-98f2-fc33b60ccdcf.webp",
-      "/Uploads/8c67f2b6-b19e-40a7-a8eb-d619ee9f6ba4.webp",
-      "/Uploads/8a50b7be-7bad-411e-8372-947a86137957.webp",
-      "/Uploads/7d38f714-8f1e-4ae7-804b-6c4bc739faca.png",
-      "/Uploads/9975f7d8-31d2-421c-b2fa-7ea5af460b90.png",
-      "/Uploads/ded0db58-83a8-4b08-a8f4-a82bc85c031a.png"
-    ],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250317115838",
-    "Content": "",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": [
-      "/Uploads/b7b5e152-26b1-4351-bc66-be9b60560d96.webp",
-      "/Uploads/56059183-80c5-46e5-bfc4-1ee2515b8a8a.png",
-      "/Uploads/4c880c9d-afb4-40a8-ac4b-77c4c76ae6f8.jpg",
-      "/Uploads/ceb7faca-0725-43e4-93bd-cc13ad7cf9c7.jpg",
-      "/Uploads/2c95d791-d0b1-4e17-866a-f318930d348e.jpg",
-      "/Uploads/d1bdff27-13ab-4397-b229-8c46e34592c9.jpg"
-    ],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250317125614",
-    "Content": "",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [],
-    "ImageUrls": [
-      "/Uploads/1ae0d874-c053-4aec-8d2a-220d65e31b93.webp",
-      "/Uploads/fa6d8257-5923-47ed-8ffc-dc8d3703c5c1.jpg"
-    ],
-    "UsersWhoLiked": []
-  },
-  {
-    "Id": "20250317125628",
-    "Content": "",
-    "Author": "Anônimo",
-    "Approved": false,
-    "Likes": 0,
-    "Comments": [
-      {
-        "Id": "d1046d12-3c97-474f-aa4f-c9f695c44e2e",
-        "NewsId": "20250317125628",
-        "Content": "Ajustado texto do comentario com sucesso!",
-        "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-17T15:55:23.8665545-03:00",
-        "Likes": 1,
-        "UsersWhoLiked": [
-          "anonimo"
-        ]
+        ],
+        "heavusedlogliked": false
       },
       {
-        "Id": "6ed776c2-7280-4071-9682-4108e1031893",
-        "NewsId": "20250317125628",
-        "Content": "dqwqiwhdiuqhwdqwhduiqwd",
+        "Id": "57531ab5-53fb-42b7-87fb-1b66509d13e8",
+        "NewsId": "20250318225119",
+        "Content": "bhbfiuwhuifwe",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-17T16:20:42.865273-03:00",
-        "Likes": 0,
-        "UsersWhoLiked": []
+        "Timestamp": "2025-03-18T22:51:47.0837407-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ],
+        "heavusedlogliked": false
       }
     ],
-    "ImageUrls": [
-      "/Uploads/16b982b1-289c-40c8-a2c3-1f71fd21c5fd.jpg",
-      "/Uploads/96a18a0b-43ed-449b-b0e5-f0f17ddb6dfc.webp"
-    ],
+    "ImageUrls": [],
     "UsersWhoLiked": []
   }
 ]
