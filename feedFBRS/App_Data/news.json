@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "Id": "20250320202804",
+    "Content": "Faça uma postagem :D",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 1,
+    "Comments": [
+      {
+        "Id": "3d4b0722-70f2-441e-892d-ab36f6b2207b",
+        "NewsId": "20250320202804",
+        "Content": "XD",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-20T20:28:14.6336457-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ],
+        "heavusedlogliked": false
+      }
+    ],
+    "ImageUrls": [
+      "/Uploads/66a3df5c-f884-4839-a016-364ebd1b96c0.webp",
+      "/Uploads/3564336d-a1f4-475d-be3f-f9db0494069d.jpg"
+    ],
+    "UsersWhoLiked": [
+      "anonimo"
+    ]
+  }
+]
