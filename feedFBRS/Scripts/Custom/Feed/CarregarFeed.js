@@ -32,7 +32,14 @@
                                                             <div class="carousel-inner">
                                                                 ${news.ImageUrls.map((url, index) => `
                                                                     <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                                                                        <img src="${url}" class="d-block w-100" alt="Imagem do post">
+                                                                        ${url.match(/\.(mp4|webm|ogg)$/) ? `
+                                                                            <video class="d-block w-100" controls>
+                                                                                <source src="${url}" type="video/mp4">
+                                                                                Seu navegador não suporta vídeos.
+                                                                            </video>
+                                                                        ` : `
+                                                                            <img src="${url}" class="d-block w-100" alt="Imagem do post">
+                                                                        `}
                                                                     </div>
                                                                 `).join('')}
                                                             </div>
@@ -90,6 +97,22 @@
                                                 </div>
                                                         </div>
                                                     `;
+
+                    $(document).ready(function () {
+                        $(document).on('keydown', '.comentario-input', function (event) {
+                            if (event.key === "Enter" && $(this).val().trim() !== '') {
+                                event.preventDefault(); // Impede quebra de linha
+
+                                let textareaId = $(this).attr('id'); // Obtém o ID do textarea
+                                let botao = $(`button[data-textarea-id="${textareaId}"]`); // Encontra o botão correspondente
+
+                                if (botao.length) {
+                                    botao.click(); // Simula o clique no botão de envio
+                                }
+                            }
+                        });
+                    });
+                                    
 
                     // Adiciona a notícia ao feed
                     feedContainer.innerHTML += noticiaHTML;
