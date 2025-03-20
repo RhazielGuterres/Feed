@@ -29,6 +29,7 @@
         display: flex;
         align-items: center;
         padding: 3%;
+        margin-left: 2%;
     }
 
     .user-avatar {
@@ -149,7 +150,7 @@
     }
 
     .icon-container {
-        background-color: #ccc;
+        background-color: #cccccc;
         /* Fundo cinza */
         border-radius: 50%;
         /* Deixa a div redonda */
@@ -216,6 +217,8 @@
         font-family: Arial, sans-serif;
         resize: none;
         overflow: hidden;
+        max-width: 100%;
+        line-height: 1.6;
     }
 
     .alintextcoment {
@@ -298,8 +301,8 @@
 
     .image-container {
         position: relative;
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        height: 150px;
         border-radius: 10px;
         overflow: hidden;
         border: 1px solid #ccc;
@@ -313,17 +316,20 @@
 
     .remove-image {
         position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
+        background-color: rgba(0, 0, 0, 0);
         border: none;
         border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        width: 50px;
+        height: 50px;
         display: none;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        border: none;
         cursor: pointer;
     }
 
@@ -341,6 +347,19 @@
             height: 400px; /* Mantém todas as imagens com a mesma altura */
             object-fit: cover; /* Ajusta as imagens sem distorção */
         }
+
+    .comentarios-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .card-text {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    
+    
 </style>
 
 <body class="fontefeed" style="background-color: #f5f5f5;">
@@ -371,8 +390,10 @@
                             </div>
                             <form id="newsForm" enctype="multipart/form-data">
                                 <div class="modal-body">
-                                    <textarea class="textarea-container" id="content" name="content"
-                                              placeholder="Digite aqui o que você quer que apareça no feed..."></textarea>
+                                    <div style="display: flex; justify-content: center;">
+                                        <textarea style="max-width: 700px;" class="textarea-container" id="content" name="content"
+                                                  placeholder="Digite aqui o que você quer que apareça no feed..."></textarea>
+                                    </div>
                                     <div class="mt-3 d-flex align-items-center">
                                         <label class="add-photo">
                                             <div class="bolinhaTitulo" style="position: relative; left: -6px;">
@@ -385,9 +406,9 @@
                                         </label>
                                         <span id="contadorFotos" class="ms-2 text-muted" style="font-size: 14px;">0/6</span>
                                     </div>
-                                    <div id="imagePreviewContainer" class="d-flex mt-3"></div>
+                                    <div style="min-height: 150px; gap: 8px" id="imagePreviewContainer" class="d-flex mt-3"></div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="border-top: none;">
                                     <button type="button" class="btn-footer" data-bs-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn-footer" style="background-color: #007bff;"
                                             id="publicarBtn">
@@ -399,112 +420,9 @@
                     </div>
                 </div>
 
-                <script>
+                <!-- PUBLICAR NOTICIA -->
 
-                    document.getElementById("newsForm").addEventListener("submit", function (event) {
-                        event.preventDefault(); // Impede o reload da página
-
-                        let formData = new FormData(this);
-
-                        // Adiciona imagens ao FormData
-                        imagens.forEach((file) => {
-                            formData.append(`images`, file); // Adiciona cada imagem ao FormData
-                        });
-
-                        fetch("/News/Create", {
-                            method: "POST",
-                            body: formData
-                        }).then(response => {
-                            if (response.ok) {
-                                alert("Notícia publicada com sucesso!");
-                                location.reload(); // Recarrega o feed para exibir a nova notícia
-                            } else {
-                                alert("Erro ao publicar notícia!");
-                            }
-                        }).catch(error => {
-                            console.error("Erro:", error);
-                            alert("Erro ao publicar notícia!");
-                        });
-                    });
-
-                    const inputFile = document.getElementById("inputFile");
-                    const imagePreviewContainer = document.getElementById("imagePreviewContainer");
-                    const contadorFotos = document.getElementById("contadorFotos");
-                    const publicarBtn = document.getElementById("publicarBtn");
-                    const publicacoes = document.getElementById("publicacoes");
-
-                    let imagens = [];
-
-                    inputFile.addEventListener("change", function (event) {
-                        let files = Array.from(event.target.files);
-
-                        files.forEach(file => {
-                            if (imagens.length < 6) {
-                                imagens.push(file);
-                            }
-                        });
-
-                        atualizarPreview();
-                    });
-
-                    function atualizarPreview() {
-                        imagePreviewContainer.innerHTML = "";
-                        imagens.forEach((file, index) => {
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                let imgWrapper = document.createElement("div");
-                                imgWrapper.classList.add("image-container");
-                                imgWrapper.innerHTML = `
-                                                <img src="${e.target.result}" alt="Imagem" style="max-width: 100px; margin-right: 10px;">
-                                                <button class="remove-image" onclick="removerImagem(${index})">&times;</button>
-                                            `;
-                                imagePreviewContainer.appendChild(imgWrapper);
-                            };
-                            reader.readAsDataURL(file);
-                        });
-
-                        contadorFotos.innerText = `${imagens.length}/6`;
-                    }
-
-                    function removerImagem(index) {
-                        imagens.splice(index, 1);
-                        atualizarPreview();
-
-                        // Atualizar o input file para refletir as imagens restantes
-                        let dataTransfer = new DataTransfer();
-                        imagens.forEach(file => dataTransfer.items.add(file));
-                        inputFile.files = dataTransfer.files;
-                    }
-
-                    publicarBtn.addEventListener("click", function () {
-                        publicacoes.innerHTML = "<h4>Publicação</h4>";
-
-                        imagens.forEach(file => {
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                let imgElement = document.createElement("img");
-                                imgElement.src = e.target.result;
-                                imgElement.width = 150;
-                                imgElement.style.margin = "5px";
-                                publicacoes.appendChild(imgElement);
-                            };
-                            reader.readAsDataURL(file);
-                        });
-
-                        imagens = [];
-                        atualizarPreview();
-
-                        // Fechar a modal corretamente se estiver usando Bootstrap
-                        let modalElement = document.getElementById("novaPublicacaoModal");
-                        if (modalElement && bootstrap.Modal.getInstance(modalElement)) {
-                            let modal = bootstrap.Modal.getInstance(modalElement);
-                            modal.hide();
-                        }
-                    });
-
-                </script>
-
-
+                <script src="~/Scripts/Custom/Feed/PublicarNoticia.js"></script>
 
             </div>
         </div>
@@ -517,171 +435,54 @@
         </div>
 
         <!-- POSTAGEMS -->
-        <div id="feedNoticias">
-            <!-- As notícias serão inseridas aqui via JavaScript -->
-        </div>
 
+        <div id="feedNoticias">
+
+            <!-- As notícias serão inseridas aqui via JavaScript -->
+
+        </div>
 
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            carregarFeed(); // Chama a função ao carregar a página
+    <!--CURTIR NOTICIA FEED-->
 
-            function carregarFeed() {
-                fetch("/News/GetNews") // Faz uma requisição para buscar as notícias
-                    .then(response => response.json())
-                    .then(data => {
-                        let feedContainer = document.getElementById("feedNoticias");
-                        feedContainer.innerHTML = ""; // Limpa o feed antes de adicionar novas notícias
+    <script src="~/Scripts/Custom/Feed/CurtirNoticiaFeed.js"></script>
 
-                        data.forEach(news => {
-                            console.log("Notícia recebida:", news);
-                            let noticiaHTML = `
-                                            <div class="noticia">
-                                                <!-- Perfil do Usuário -->
-                                                <div class="user-profile">
-                                                    <div class="user-avatar publicacao"></div>
-                                                    <div class="user-info alinhartexto-publicacao">
-                                                        <h5 class="m-0 tamanhonomeusuario">${news.Author}</h5>
-                                                    </div>
-                                                    <div class="horario">
-                                                        ${formatarData(news.Id)}
-                                                    </div>
-                                                </div>
+    <!--CARREGAR FEED / FORMATA DATA-->
 
-                                                <!-- Conteúdo da notícia -->
-                                                <div class="card-body" style="word-wrap: break-word;">
-                                                    <p class="card-text">${news.Content}</p>
-                                                </div>
+    <script src="~/Scripts/Custom/Feed/CarregarFeed.js"></script>
 
-                                                <div id="carousel-${news.Id}" class="carousel slide">
-                                                <div class="carousel-inner">
-                                                    ${news.ImageUrls.map((url, index) => `
-                                                        <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                                                            <img src="${url}" class="d-block w-100" alt="Imagem do post">
-                                                        </div>
-                                                    `).join('')}
-                                                </div>
-                                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${news.Id}" data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Previous</span>
-                                                </button>
-                                                <button class="carousel-control-next" type="button" data-bs-target="#carousel-${news.Id}" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
-                                                </button>
-                                                </div>
-                                                <!-- Ações -->
-                                                <div class="card-footer d-flex justify-content-between align-items-center postiondivi" style="display: flex; margin-right: 40px; margin-left: 40px;">
-                                        <div>
-                                            <button class="heart-btn tirarlinha" style="padding: 0px;" onclick="curtirNoticia('${news.Id}')">
-                                                <svg class="heart-icon tirarcor" width="30" height="30" viewBox="0 0 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-outline-secondary btn-sm"
-                                                onclick="abrirModalComentarios('${news.Id}')">
-                                                <svg aria-label="Comentar" fill="currentColor" height="24" role="img"
-                                                    viewBox="0 0 24 24" width="24">
-                                                    <title>Comentar</title>
-                                                    <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
-                                                        fill="none" stroke="gray" stroke-linejoin="round" stroke-width="2">
-                                                    </path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="comentario-box">
-                                            <textarea class="comentario-input" placeholder="Comente algo aqui..."
-                                                rows="1"></textarea>
-                                        </div>
-                                        <div>
-                                            <button class="icon-container" style="border: none; outline: none;padding: 2px">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
-                                                    fill="white">
-                                                    <path
-                                                        d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z"
-                                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div id="comentarios-${news.Id}" class="positioncomentfeed"></div>
-                                    </div>
-                                            </div>
-                                        `;
+    <!-- SCROLLBAR PERSONALIZADA -->
+    <style>
+        /* Estilizando a scrollbar para navegadores baseados em WebKit (Chrome, Edge, Safari) */
+        ::-webkit-scrollbar {
+            width: 15px; /* Largura da barra de rolagem geral */
+            border-radius: 10px;
+        }
 
-                            // Adiciona a notícia ao feed
-                            feedContainer.innerHTML += noticiaHTML;
+        ::-webkit-scrollbar-track {
+            background: #ffffff; /* Fundo branco (barra externa) */
+            border-radius: 10px;
+            box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3); /* Sombra apenas no lado direito e inferior */
+        }
 
-                            // Buscar e atualizar o número de comentários
-                            fetch(`/News/GetCommentCount?newsId=${news.Id}`)
-                                .then(response => response.json())
-                                .then(countData => {
-                                    let comentariosDiv = document.getElementById(`comentarios-${news.Id}`);
+        ::-webkit-scrollbar-thumb {
+            background: #a0a0a0; /* Barra de dentro cinza */
+            border-radius: 10px;
+            width: 8px; /* Tornando a barra de dentro mais fina */
+            margin: auto;
+            border: 4px solid #ffffff; /* Criando uma borda branca para dar o efeito de barra dentro da barra */
+        }
+    </style>
 
-                                    if (countData.count === 0) {
-                                        comentariosDiv.style.display = "none"; // Esconde se não houver comentários
-                                    } else {
-                                        let textoComentario = countData.count === 1 ? "1 comentário" : `${countData.count} comentários`;
-
-                                        comentariosDiv.innerHTML = `
-                                            ${textoComentario}, 
-                                            <span onclick="abrirModalComentarios('${news.Id}')" 
-                                                  style="color: #4d4d4d; cursor: pointer; text-decoration: none;">
-                                                <i>ver todos...</i>
-                                            </span>
-                                        `;
-                                        comentariosDiv.style.display = "block"; // Garante que aparece se houver comentários
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error("Erro ao buscar quantidade de comentários:", error);
-                                    document.getElementById(`comentarios-${news.Id}`).innerHTML = "Erro ao carregar comentários.";
-                                });
-
-
-                        });
-                    })
-                    .catch(error => console.error("Erro ao carregar o feed:", error));
-            }
-
-            function formatarData(id) {
-                let ano = id.substring(0, 4);
-                let mes = id.substring(4, 6);
-                let dia = id.substring(6, 8);
-                let hora = id.substring(8, 10);
-                let minuto = id.substring(10, 12);
-                return `${dia}/${mes}/${ano} ${hora}:${minuto}`;
-            }
-
-            function curtirNoticia(id) {
-                fetch(`/News/Like?id=${id}`, { method: "POST" })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            carregarFeed(); // Atualiza o feed após curtir
-                        }
-                    })
-                    .catch(error => console.error("Erro ao curtir a notícia:", error));
-            }
-        });
-    </script>
-
-    <!-- Modal de Comentários -->
-    <div class="modal fade" id="modalComentarios" tabindex="-1" aria-hidden="true" data-postID>
+    <!-- MODAL DE COMENTARIOS -->
+    <div class="modal fade" id="modalComentarios" tabindex="-1" aria-hidden="true" data-post-id>
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="height: 500px;">
                 <div class="modal-header">
-                    <span style="color: #01cf7d; font-size: px;">●</span>
+                    <span style="color: #01cf7d; font-size: 26px;">●</span>
                     <h5 class="modal-title ms-2"
-                        style="position: relative; left: -130px; top: 2px;">
+                        style="position: relative; left: -133px; top: 2px;">
                         Comentários
                     </h5>
                     <button type="button" class="close" style="font-size: 25px;"
@@ -689,180 +490,51 @@
                         &#10006;
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="max-height: 400px; overflow-y: auto;" ">
                     <div id="listaComentarios" class="comentarios-container">
                         <p class="text-muted">Carregando comentários...</p>
                     </div>
-                    <div style="display: flex ;gap: 6px;">
-                        <div>
-                            <div class="user-profile"></div>
-                            <div class="user-avatar" style="width: 27px; height: 27px; margin-right: 0px;"></div>
+                </div>
+                <br>
+                <div style="display: flex; gap: 6px; align-items: center; justify-content: space-around; width: 100%;">
+                    <div>
+                        <div class="user-profile"></div>
+                        <div class="user-avatar" style="width: 27px; height: 27px; margin-right: 0px; margin-top: -2px;"></div>
 
-                        </div>
-                        <div class="comentario-box">
-                            <textarea id="novoComentario" class="comentario-input"
-                                      placeholder="Comente algo aqui..."></textarea>
-                        </div>
-                        <div class="comentario-boxi" style="display: flex; align-items: center;">
-                            <button class="icon-container" style="border: none; outline: none;"
-                                    onclick="adicionarComentario()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                     viewBox="0 0 24 24" fill="white">
-                                    <path d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z"
-                                          stroke="white" stroke-width="2" stroke-linecap="round"
-                                          stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                        </div>
+                    </div>
+                    <div class="comentario-box">
+                        <textarea id="novoComentarioModal" class="comentario-input"
+                                  placeholder="Comente algo aqui..."></textarea>
+                    </div>
+                    <div class="comentario-boxi">
+                        <button class="icon-container" onclick="adicionarComentario(this)" style="border: none; outline: none; padding: 2px; width: 27px; height: 27px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+                                <path d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z"
+                                      stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
+    <!-- MODAL DE COMENTARIOS -->
+    <script src="~/Scripts/Custom/Comment/ModalComentarios.js"></script>
 
-        function abrirModalComentarios(postId) {
-            let modal = document.getElementById("modalComentarios");
-            modal.dataset.postId = postId; // Armazena o ID do post na modal
-            carregarComentarios(postId);
-            new bootstrap.Modal(modal).show();
-        }
+    <!--ADICIONAR COMENTARIOS MODAL E FEED-->
 
+    <script src="~/Scripts/Custom/Comment/AdicionarComentario.js"></script>
 
-        function carregarComentarios(postId) {
-            let lista = document.getElementById("listaComentarios");
-            lista.innerHTML = "<p class='text-muted'>Carregando comentários...</p>";
+    <!--CURTIR COMENTARIOS-->
 
-            fetch(`/News/GetComments?newsId=${postId}`)
-                .then(response => response.json())
-                .then(response => {
-                    console.log("Comentários recebidos:", response);
+    <script src="~/Scripts/Custom/Comment/CurtirComentarios.js"></script>
 
-                    if (!response.success || response.data.length === 0) {
-                        lista.innerHTML = "<p class='text-muted'>Nenhum comentário ainda.</p>";
-                        return;
-                    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
-                    lista.innerHTML = ""; // Limpa antes de adicionar os novos
+    <!-- DRAGANDDROP -->
 
-                    response.data.forEach((c, index) => {
-                        lista.innerHTML += `
-                    <div class="comentario">
-                        <div class="comentario-avatar">${c.Author.charAt(0)}</div>
-                        <div class="comentario-conteudo">
-                            <span class="comentario-usuario">${c.Author}</span> 
-                            <span style="font-size: 12px; color: gray;">${formatarData(c.Timestamp)}</span>
-                            <p class="comentario-texto">${c.Content}</p>
-                            <div class="comentario-acoes">
-                                <button class="botao-curtir" onclick="curtirComentario('${postId}', '${c.Id}')">💜</button>
-                                <span id="curtidas-${postId}-${c.Id}" class="comentario-likes">${c.Likes} curtidas</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                    });
-                })
-                .catch(error => console.error("Erro ao carregar comentários:", error));
-        }
-
-
-
-        function formatarData(timestamp) {
-            if (!timestamp) return "Data inválida";
-
-            // Extrai o número dentro de /Date(XXXXXXXXXXXXX)/
-            let match = timestamp.match(/\d+/);
-            if (!match) return "Data inválida";
-
-            let data = new Date(parseInt(match[0]));
-
-            if (isNaN(data.getTime())) {
-                return "Data inválida";
-            }
-
-            return data.toLocaleString("pt-BR", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit"
-            });
-        }
-
-        function curtirNoticia(newsId) {
-            let userId = localStorage.getItem("userId") || "anonimo"; // Simula um usuário, substitua pelo real
-
-            fetch(`/News/Like`, {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `id=${encodeURIComponent(newsId)}&userId=${encodeURIComponent(userId)}`
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        carregarFeed();
-                    } else {
-                        alert("Você já curtiu essa notícia!");
-                    }
-                })
-                .catch(error => console.error("Erro ao curtir a notícia:", error));
-        }
-
-
-
-
-        function adicionarComentario() {
-            let texto = document.getElementById("novoComentario").value.trim();
-            let postId = document.getElementById("modalComentarios").dataset.postId;
-            let author = "Usuário Exemplo"; // Aqui você deve substituir pelo nome do usuário logado
-
-            if (texto === "") {
-                alert("Digite um comentário antes de enviar!");
-                return;
-            }
-
-            fetch("/News/AddComment", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `id=${encodeURIComponent(postId)}&commentText=${encodeURIComponent(texto)}&author=${encodeURIComponent(author)}`
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        document.getElementById("novoComentario").value = ""; // Limpa o campo
-                        carregarComentarios(postId); // Atualiza os comentários da modal
-                    } else {
-                        alert("Erro ao adicionar comentário: " + data.message);
-                    }
-                })
-                .catch(error => console.error("Erro ao adicionar comentário:", error));
-        }
-
-        function curtirComentario(newsId, commentId) {
-            let userId = localStorage.getItem("userId") || "anonimo"; // Simula um usuário, substitua pelo real
-
-            fetch(`/News/LikeComment`, {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `newsId=${encodeURIComponent(newsId)}&commentId=${encodeURIComponent(commentId)}&userId=${encodeURIComponent(userId)}`
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        carregarComentarios(newsId); // Atualiza os comentários para refletir o novo número de likes
-                    }
-                })
-                .catch(error => console.error("Erro ao alternar curtida:", error));
-        }
-
-
-
-    </script>
-
+    <script src="~/Scripts/Custom/PreviewImagens/PreviewImegens.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

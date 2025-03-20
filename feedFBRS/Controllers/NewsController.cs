@@ -13,7 +13,7 @@ namespace feedFBRS.Controllers
     {
         private NewsDAO newsDAO = new NewsDAO();
 
-        // 🔹 Exibir todas as notícias
+        // EXIBIR AS NOTICIAS
         public ActionResult Index()
         {
             var newsList = newsDAO.LoadNews();
@@ -21,10 +21,16 @@ namespace feedFBRS.Controllers
         }
 
 
+        // CRIAR NOTICIA
         [HttpPost]
         public ActionResult Create(string title, string content, string author, HttpPostedFileBase[] images)
         {
-            if (!string.IsNullOrEmpty(content)) // Apenas 'content' é obrigatório
+
+            // Verifica se há conteúdo de texto ou pelo menos uma imagem válida
+            bool hasContent = !string.IsNullOrEmpty(content);
+            bool hasImages = images != null && images.Any(img => img != null && img.ContentLength > 0);
+
+            if (hasContent || hasImages) // verificar se apenas um dos dois valores está preenchido (imagem ou texto)
             {
                 List<string> imagePaths = new List<string>(); // Lista para armazenar os caminhos das imagens
 
@@ -36,7 +42,7 @@ namespace feedFBRS.Controllers
                 }
 
                 // 🔹 Salva todas as imagens corretamente, se houverem
-                if (images != null)
+                if (hasImages)
                 {
                     foreach (var image in images)
                     {
@@ -69,7 +75,7 @@ namespace feedFBRS.Controllers
 
 
 
-
+        // BUSCAR NOTICIAS
         public JsonResult GetNews()
         {
             var newsList = newsDAO.LoadNews(); // Busca as notícias no banco ou JSON
@@ -87,7 +93,7 @@ namespace feedFBRS.Controllers
 
 
 
-        // 🔹 Aprovar Notícia (somente GGP ou Comunicação)
+        // CRIADO PARA APROVAR NOTICIAS (NÃO FUNCIONAL)
         public ActionResult Approve(string id)
         {
             var newsList = newsDAO.LoadNews();
@@ -100,65 +106,29 @@ namespace feedFBRS.Controllers
             return RedirectToAction("Index");
         }
 
-        // Método para curtir uma notícia
+        // CURTIR AS NOTICIAS
         public ActionResult Like(string id, string userId)
         {
-            newsDAO.AddLike(id, userId);
-            return Json(new { success = true, message = "Curtida registrada!" });
-        }
+            bool alreadyLiked = newsDAO.HasUserLiked(id, userId);
 
-        // Método para adicionar um comentário
-        [HttpPost]
-        public JsonResult AddComment(string id, string commentText, string author)
-        {
-            if (!string.IsNullOrEmpty(commentText))
+            if (alreadyLiked)
             {
-                var comment = new Comment
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    NewsId = id,
-                    Content = commentText,
-                    Author = author,
-                    Timestamp = DateTime.Now
-                };
-
-                newsDAO.AddComment(id, comment);
-                return Json(new { success = true, message = "Comentário adicionado com sucesso!" });
+                newsDAO.RemoveLike(id, userId); // Se já curtiu, remove a curtida (toggle)
+                return Json(new { success = true, liked = false, message = "Curtida removida!" });
             }
-            return Json(new { success = false, message = "Comentário inválido." });
-        }
-
-        [HttpGet]
-        public JsonResult GetComments(string newsId)
-        {
-            var comments = newsDAO.GetComments(newsId);
-
-            if (comments == null || comments.Count == 0)
+            else
             {
-                return Json(new { success = false, message = "Nenhum comentário encontrado." }, JsonRequestBehavior.AllowGet);
+                newsDAO.AddLike(id, userId);
+                return Json(new { success = true, liked = true, message = "Curtida registrada!" });
             }
-
-            return Json(new { success = true, data = comments }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public JsonResult GetCommentCount(string newsId)
+        // CHECAR SE A NOTICIA JÁ FOI CURTIDA
+        public ActionResult CheckLike(string id, string userId)
         {
-            int count = newsDAO.GetCommentCount(newsId);
-            return Json(new { success = true, count = count }, JsonRequestBehavior.AllowGet);
+            bool liked = newsDAO.HasUserLiked(id, userId);
+            return Json(new { liked }, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-        [HttpPost]
-        public JsonResult LikeComment(string newsId, string commentId, string userId)
-        {
-            newsDAO.AddLikeToComment(newsId, commentId, userId);
-            return Json(new { success = true, message = "Comentário curtido com sucesso!" });
-        }
-
-
 
 
     }

@@ -35,6 +35,36 @@ namespace feedFBRS.DAO
             }
         }
 
+        public bool HasUserLiked(string newsId, string userId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+
+            if (news != null)
+            {
+                return news.UsersWhoLiked.Contains(userId);
+            }
+
+            return false;
+        }
+
+        public void RemoveLike(string newsId, string userId)
+        {
+            var newsList = LoadNews();
+            var news = newsList.Find(n => n.Id == newsId);
+
+            if (news != null)
+            {
+                if (news.UsersWhoLiked.Contains(userId)) // Verifica se o usuário curtiu
+                {
+                    news.UsersWhoLiked.Remove(userId);
+                    news.Likes = Math.Max(0, news.Likes - 1); // Garante que não fique negativo
+                    SaveNews(newsList);
+                }
+            }
+        }
+
+
         public void AddComment(string newsId, Comment comment)
         {
             var newsList = LoadNews();
@@ -73,37 +103,6 @@ namespace feedFBRS.DAO
             var news = newsList.Find(n => n.Id == newsId);
             return news?.Comments.Count ?? 0; // Retorna o número de comentários
         }
-
-
-
-
-        public void AddLikeToComment(string newsId, string commentId, string userId)
-        {
-            var newsList = LoadNews();
-            var news = newsList.Find(n => n.Id == newsId);
-
-            if (news != null)
-            {
-                var comment = news.Comments.Find(c => c.Id == commentId);
-                if (comment != null)
-                {
-                    if (comment.UsersWhoLiked.Contains(userId)) // Se já curtiu, remove
-                    {
-                        comment.UsersWhoLiked.Remove(userId);
-                        comment.Likes--;
-                    }
-                    else // Se não curtiu, adiciona
-                    {
-                        comment.UsersWhoLiked.Add(userId);
-                        comment.Likes++;
-                    }
-                    SaveNews(newsList);
-                }
-            }
-        }
-
-
-
 
     }
 }
