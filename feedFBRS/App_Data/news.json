@@ -96,12 +96,26 @@
     "Content": "ewqhuehwqiuheqiuew",
     "Author": "Anônimo",
     "Approved": false,
-    "Likes": 0,
+    "Likes": 1,
     "Comments": [],
     "ImageUrls": [
       "/Uploads/aadb5391-1c56-448d-9b83-3d59d4c6b959.webp",
       "/Uploads/0911d12d-9bd0-426c-b920-3405792cfab3.jpg",
       "/Uploads/f267b509-2ac0-44f9-bab4-27af8290f04f.jpg"
+    ],
+    "UsersWhoLiked": [
+      "anonimo"
+    ]
+  },
+  {
+    "Id": "20250320131319",
+    "Content": "",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/0a15b318-10ff-4af4-8e04-6e3e06eb3521.png"
     ],
     "UsersWhoLiked": []
   }
