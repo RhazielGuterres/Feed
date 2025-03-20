@@ -90,5 +90,19 @@
     "Comments": [],
     "ImageUrls": [],
     "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250319235621",
+    "Content": "ewqhuehwqiuheqiuew",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [
+      "/Uploads/aadb5391-1c56-448d-9b83-3d59d4c6b959.webp",
+      "/Uploads/0911d12d-9bd0-426c-b920-3405792cfab3.jpg",
+      "/Uploads/f267b509-2ac0-44f9-bab4-27af8290f04f.jpg"
+    ],
+    "UsersWhoLiked": []
   }
 ]
