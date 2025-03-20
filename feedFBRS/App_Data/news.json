@@ -1,29 +1,17 @@
 [
   {
-    "Id": "20250318225119",
-    "Content": "teste",
+    "Id": "20250319230222",
+    "Content": "Teste de nova noticia",
     "Author": "Anônimo",
     "Approved": false,
-    "Likes": 0,
+    "Likes": 1,
     "Comments": [
       {
-        "Id": "30184d1d-4c97-45ec-88eb-3c99e6cd740f",
-        "NewsId": "20250318225119",
-        "Content": "udhwquhdquihdqw",
+        "Id": "1060f995-1e6a-478b-9853-af85c1088f2e",
+        "NewsId": "20250319230222",
+        "Content": "comentario teste",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-18T22:51:35.2187931-03:00",
-        "Likes": 1,
-        "UsersWhoLiked": [
-          "anonimo"
-        ],
-        "heavusedlogliked": false
-      },
-      {
-        "Id": "57531ab5-53fb-42b7-87fb-1b66509d13e8",
-        "NewsId": "20250318225119",
-        "Content": "bhbfiuwhuifwe",
-        "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-18T22:51:47.0837407-03:00",
+        "Timestamp": "2025-03-19T23:02:40.5429644-03:00",
         "Likes": 1,
         "UsersWhoLiked": [
           "anonimo"
@@ -31,7 +19,13 @@
         "heavusedlogliked": false
       }
     ],
-    "ImageUrls": [],
-    "UsersWhoLiked": []
+    "ImageUrls": [
+      "/Uploads/894608d7-6380-477a-a2ff-d074998f1344.webp",
+      "/Uploads/839a0ed4-2987-45a1-abf2-6a5de1d454d0.jpg",
+      "/Uploads/b9ce9732-21bf-464a-949f-c8c1e0f15b1e.jpg"
+    ],
+    "UsersWhoLiked": [
+      "anonimo"
+    ]
   }
 ]

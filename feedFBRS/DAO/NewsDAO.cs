@@ -65,7 +65,6 @@ namespace feedFBRS.DAO
         }
 
 
-
         public void AddComment(string newsId, Comment comment)
         {
             var newsList = LoadNews();
@@ -104,38 +103,6 @@ namespace feedFBRS.DAO
             var news = newsList.Find(n => n.Id == newsId);
             return news?.Comments.Count ?? 0; // Retorna o número de comentários
         }
-
-
-
-
-
-        public void AddLikeToComment(string newsId, string commentId, string userId)
-        {
-            var newsList = LoadNews();
-            var news = newsList.Find(n => n.Id == newsId);
-
-            if (news != null)
-            {
-                var comment = news.Comments.Find(c => c.Id == commentId);
-                if (comment != null)
-                {
-                    if (comment.UsersWhoLiked.Contains(userId)) // Se já curtiu, remove
-                    {
-                        comment.UsersWhoLiked.Remove(userId);
-                        comment.Likes--;
-                    }
-                    else // Se não curtiu, adiciona
-                    {
-                        comment.UsersWhoLiked.Add(userId);
-                        comment.Likes++;
-                    }
-                    SaveNews(newsList);
-                }
-            }
-        }
-
-
-
 
     }
 }

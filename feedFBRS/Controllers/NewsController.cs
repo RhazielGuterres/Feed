@@ -15,7 +15,7 @@ namespace feedFBRS.Controllers
 
         private CommentDAO commentDAO = new CommentDAO();
 
-        // 🔹 Exibir todas as notícias
+        // EXIBIR AS NOTICIAS
         public ActionResult Index()
         {
             var newsList = newsDAO.LoadNews();
@@ -23,6 +23,7 @@ namespace feedFBRS.Controllers
         }
 
 
+        // CRIAR NOTICIA
         [HttpPost]
         public ActionResult Create(string title, string content, string author, HttpPostedFileBase[] images)
         {
@@ -76,7 +77,7 @@ namespace feedFBRS.Controllers
 
 
 
-
+        // BUSCAR NOTICIAS
         public JsonResult GetNews()
         {
             var newsList = newsDAO.LoadNews(); // Busca as notícias no banco ou JSON
@@ -94,7 +95,7 @@ namespace feedFBRS.Controllers
 
 
 
-        // 🔹 Aprovar Notícia (somente GGP ou Comunicação)
+        // CRIADO PARA APROVAR NOTICIAS (NÃO FUNCIONAL)
         public ActionResult Approve(string id)
         {
             var newsList = newsDAO.LoadNews();
@@ -107,7 +108,7 @@ namespace feedFBRS.Controllers
             return RedirectToAction("Index");
         }
 
-        // Método para curtir uma notícia
+        // CURTIR AS NOTICIAS
         public ActionResult Like(string id, string userId)
         {
             bool alreadyLiked = newsDAO.HasUserLiked(id, userId);
@@ -124,70 +125,13 @@ namespace feedFBRS.Controllers
             }
         }
 
+        // CHECAR SE A NOTICIA JÁ FOI CURTIDA
         public ActionResult CheckLike(string id, string userId)
         {
             bool liked = newsDAO.HasUserLiked(id, userId);
             return Json(new { liked }, JsonRequestBehavior.AllowGet);
         }
 
-
-
-        // Método para adicionar um comentário
-        [HttpPost]
-        public JsonResult AddComment(string id, string commentText, string author)
-        {
-            if (!string.IsNullOrEmpty(commentText))
-            {
-                var comment = new Comment
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    NewsId = id,
-                    Content = commentText,
-                    Author = author,
-                    Timestamp = DateTime.Now
-                };
-
-                newsDAO.AddComment(id, comment);
-                return Json(new { success = true, message = "Comentário adicionado com sucesso!" });
-            }
-            return Json(new { success = false, message = "Comentário inválido." });
-        }
-
-        [HttpGet]
-        public JsonResult GetComments(string newsId, string userId)
-        {
-            var comments = newsDAO.GetComments(newsId);
-
-            if (comments == null || comments.Count == 0)
-            {
-                return Json(new { success = false, message = "Nenhum comentário encontrado." }, JsonRequestBehavior.AllowGet);
-            }
-            foreach (var comentario in comments)
-            {
-                bool alreadyLiked = commentDAO.HasUserLiked(newsId, comentario.Id, userId);
-                comentario.heavusedlogliked = alreadyLiked;
-            }
-            return Json(new { success = true, data = comments }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult GetCommentCount(string newsId)
-        {
-            int count = newsDAO.GetCommentCount(newsId);
-            return Json(new { success = true, count = count }, JsonRequestBehavior.AllowGet);
-        }
-
-
-
-
-        [HttpPost]
-        public JsonResult LikeComment(string newsId, string commentId, string userId)
-        {
-            newsDAO.AddLikeToComment(newsId, commentId, userId);
-            return Json(new { success = true, message = "Comentário curtido com sucesso!" });
-        }
-
-       
 
     }
 }

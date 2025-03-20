@@ -158,6 +158,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\Custom\Comment\AdicionarComentario.js" />
+    <Content Include="Scripts\Custom\Feed\CarregarFeed.js" />
+    <Content Include="Scripts\Custom\Comment\CurtirComentarios.js" />
+    <Content Include="Scripts\Custom\Feed\CurtirNoticiaFeed.js" />
+    <Content Include="Scripts\Custom\PreviewImagens\PreviewImegens.js" />
+    <Content Include="Scripts\Custom\Comment\ModalComentarios.js" />
+    <Content Include="Scripts\Custom\Feed\PublicarNoticia.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
