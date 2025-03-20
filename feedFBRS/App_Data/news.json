@@ -1,17 +1,70 @@
 [
   {
-    "Id": "20250319230222",
-    "Content": "Teste de nova noticia",
+    "Id": "20250319231003",
+    "Content": "eqweqw",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [
+      {
+        "Id": "4acd31f3-209d-4bfd-8dbd-6f83bd82cc9b",
+        "NewsId": "20250319231003",
+        "Content": "wrwerwer",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-19T23:10:07.177789-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
+      }
+    ],
+    "ImageUrls": [],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250319231038",
+    "Content": "dasdasdas",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250319232001",
+    "Content": "fghfghf",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [],
+    "UsersWhoLiked": []
+  },
+  {
+    "Id": "20250319233402",
+    "Content": "wwdhqwduihqwudhwq",
     "Author": "Anônimo",
     "Approved": false,
     "Likes": 1,
     "Comments": [
       {
-        "Id": "1060f995-1e6a-478b-9853-af85c1088f2e",
-        "NewsId": "20250319230222",
-        "Content": "comentario teste",
+        "Id": "a81479a5-07a9-4e0e-8b60-e1e2eef94ed1",
+        "NewsId": "20250319233402",
+        "Content": "udhqwuihdqwuihduqwhdiqwhduiwq",
         "Author": "Usuário Exemplo",
-        "Timestamp": "2025-03-19T23:02:40.5429644-03:00",
+        "Timestamp": "2025-03-19T23:34:12.6933363-03:00",
+        "Likes": 1,
+        "UsersWhoLiked": [
+          "anonimo"
+        ],
+        "heavusedlogliked": false
+      },
+      {
+        "Id": "57bea73c-3b61-4e48-9933-08191884bb85",
+        "NewsId": "20250319233402",
+        "Content": "idsahuidhaduhasui",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-19T23:34:31.3080546-03:00",
         "Likes": 1,
         "UsersWhoLiked": [
           "anonimo"
@@ -20,12 +73,22 @@
       }
     ],
     "ImageUrls": [
-      "/Uploads/894608d7-6380-477a-a2ff-d074998f1344.webp",
-      "/Uploads/839a0ed4-2987-45a1-abf2-6a5de1d454d0.jpg",
-      "/Uploads/b9ce9732-21bf-464a-949f-c8c1e0f15b1e.jpg"
+      "/Uploads/b7652567-5c81-4479-85be-fce5279e1876.jpg",
+      "/Uploads/cf64324c-7316-4f8d-b5ed-63b3c9ccf408.webp",
+      "/Uploads/f3903710-cf61-4c5b-a30a-56b68e1c0975.jpg"
     ],
     "UsersWhoLiked": [
       "anonimo"
     ]
+  },
+  {
+    "Id": "20250319233452",
+    "Content": "trrthr",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [],
+    "ImageUrls": [],
+    "UsersWhoLiked": []
   }
 ]

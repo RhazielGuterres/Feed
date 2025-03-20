@@ -46,7 +46,7 @@
                                                             </button>
                                                             </div>
                                                             <!-- Ações -->
-                                                            <div class="card-footer d-flex justify-content-between align-items-center postiondivi" style="display: flex; margin-right: 6%; margin-left: 7%;">
+                                                            <div class="card-footer d-flex justify-content-between align-items-center postiondivi" style="display: flex; margin-right: 4%; margin-left: 5%;">
                                                     <div>
                                                         <button class="heart-btn tirarlinha" style="padding: 0px;" onclick="curtirNoticia('${news.Id}')" data-news-id="${news.Id}">
                                                             <svg class="heart-icon tirarcor" width="27" height="27" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

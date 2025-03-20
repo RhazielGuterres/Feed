@@ -13,8 +13,6 @@ namespace feedFBRS.Controllers
     {
         private NewsDAO newsDAO = new NewsDAO();
 
-        private CommentDAO commentDAO = new CommentDAO();
-
         // EXIBIR AS NOTICIAS
         public ActionResult Index()
         {
