@@ -17,6 +17,46 @@
           "anonimo"
         ],
         "heavusedlogliked": false
+      },
+      {
+        "Id": "7c64cb9d-e304-4c88-9d47-046bea2ae73c",
+        "NewsId": "20250320202804",
+        "Content": "idqwbhuidqwydvqw",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-21T12:28:12.8011344-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
+      },
+      {
+        "Id": "70f94e42-17aa-47e5-8b20-4bbcf3fd9db2",
+        "NewsId": "20250320202804",
+        "Content": "eqwuhewquheq",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-21T12:32:00.7837562-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
+      },
+      {
+        "Id": "bf7036e2-0725-41c3-bcfb-556626ae8de7",
+        "NewsId": "20250320202804",
+        "Content": "dsuhiahduiadhausdh",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-21T12:34:24.8437195-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
+      },
+      {
+        "Id": "9b4481c7-44fe-41e6-85dc-5f72badb95a7",
+        "NewsId": "20250320202804",
+        "Content": "teste de envio de mensagem!",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-21T12:34:35.8146931-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
       }
     ],
     "ImageUrls": [
@@ -26,5 +66,36 @@
     "UsersWhoLiked": [
       "anonimo"
     ]
+  },
+  {
+    "Id": "20250321123541",
+    "Content": "mais um post",
+    "Author": "Anônimo",
+    "Approved": false,
+    "Likes": 0,
+    "Comments": [
+      {
+        "Id": "8adeda66-07a7-4727-8b9a-d7c4af9f04c3",
+        "NewsId": "20250321123541",
+        "Content": "webqbwequieqw",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-21T12:35:48.1449195-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
+      },
+      {
+        "Id": "46d69e1e-ddc2-4b06-849a-fcba2b6b9205",
+        "NewsId": "20250321123541",
+        "Content": "outro comentario",
+        "Author": "Usuário Exemplo",
+        "Timestamp": "2025-03-21T12:36:06.1053492-03:00",
+        "Likes": 0,
+        "UsersWhoLiked": [],
+        "heavusedlogliked": false
+      }
+    ],
+    "ImageUrls": [],
+    "UsersWhoLiked": []
   }
 ]
